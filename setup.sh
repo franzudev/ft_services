@@ -21,4 +21,10 @@ kubectl apply -f srcs/metalLB/config.yaml
 kubectl apply -f srcs/config/nginx-deployment.yaml
 kubectl apply -f srcs/config/nginx-service.yaml
 
+# init dashboard
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+kubectl proxy
+echo "Dashboard is at: \n http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/"
+
+
 kubectl get services
