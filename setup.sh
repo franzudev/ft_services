@@ -15,5 +15,10 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manife
 # On first install only
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 
-# Apply LB config
+docker build -t my_nginx -f ./srcs/nginx/Dockerfile ./srcs/nginx
+
 kubectl apply -f srcs/metalLB/config.yaml
+kubectl apply -f srcs/config/nginx-deployment.yaml
+kubectl apply -f srcs/config/nginx-service.yaml
+
+kubectl get services
