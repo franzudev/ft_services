@@ -7,14 +7,12 @@ spec:
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: shuub.club
+  commonName: localhost
   dnsNames:
-    - shuub.club
-    - www.shuub.club
+    - localhost
   acme:
     config:
       - http01:
           ingressClass: nginx
         domains:
-          - shuub.club
-          - www.shuub.club
+          - localhost

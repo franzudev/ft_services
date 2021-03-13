@@ -16,15 +16,29 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manife
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 
 docker build -t my_nginx -f ./srcs/nginx/Dockerfile ./srcs/nginx
+docker build -t my_wp -f ./srcs/wordpress/Dockerfile ./srcs/wordpress
 
 kubectl apply -f srcs/metalLB/config.yaml
 kubectl apply -f srcs/config/nginx-deployment.yaml
 kubectl apply -f srcs/config/nginx-service.yaml
+kubectl apply -f srcs/config/wordpress-deployment.yaml
+kubectl apply -f srcs/config/wordpress-service.yaml
 
 # init dashboard
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
-kubectl proxy
-echo "Dashboard is at: \n http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/"
+kubectl apply -f srcs/config/dashboard-adminuser.yaml
+kubectl apply -f srcs/config/admin-rolebinding.yaml
+echo "\n"
+kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
+echo "\n"
+
+kubectl proxy &
+APISERVER=$(kubectl config view --minify | grep server | cut -f 2- -d ":" | tr -d " ")
+SECRET_NAME=$(kubectl get secrets | grep ^default | cut -f1 -d ' ')
+TOKEN=$(kubectl describe secret $SECRET_NAME | grep -E '^token' | cut -f2 -d':' | tr -d " ")
+
+# curl $APISERVER/api --header "Authorization: Bearer $TOKEN" --insecure
+echo "\nDashboard is at: \n http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/"
 
 
 kubectl get services
