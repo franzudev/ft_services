@@ -22,11 +22,13 @@ RUN		adduser -D -g 'www' www
 RUN		mkdir /www
 
 WORKDIR	/www
-RUN 	wget -c https://wordpress.org/latest.tar.gz -O - | tar -xz -C .
+RUN 	wget -c https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-english.tar.gz -O - | tar -xz -C .
+RUN		mv phpMyAdmin-5.0.4-english phpmyadmin
+RUN		cp phpmyadmin/config.sample.inc.php phpmyadmin/config.inc.php
+RUN		sed -i -e "/blowfish\_secret/s/''/'7\)TQ:\`xLz:z\>\'Ef\<5k\?8q\*Dx\#\\\:h~\(V6'/" phpmyadmin/config.inc.php
 
-COPY	wp-config.php /www/wordpress
 COPY	nginx.conf /etc/nginx/conf.d/default.conf
-# RUN		ln -sfn /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+
 RUN		chown -R www:www /var/lib/nginx
 RUN		chown -R www:www /www
 RUN		mkdir -p /run/nginx

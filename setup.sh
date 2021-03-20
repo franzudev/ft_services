@@ -17,12 +17,15 @@ kubectl create secret generic -n metallb-system memberlist --from-literal=secret
 
 docker build -t my_nginx -f ./srcs/nginx/Dockerfile ./srcs/nginx
 docker build -t my_wp -f ./srcs/wordpress/Dockerfile ./srcs/wordpress
+docker build -t my_phpadmin -f ./srcs/phpmyadmin/Dockerfile ./srcs/phpmyadmin
 
 kubectl apply -f srcs/metalLB/config.yaml
 kubectl apply -f srcs/config/nginx-deployment.yaml
 kubectl apply -f srcs/config/nginx-service.yaml
 kubectl apply -f srcs/config/wordpress-deployment.yaml
 kubectl apply -f srcs/config/wordpress-service.yaml
+kubectl apply -f srcs/config/phpmyadmin-deployment.yaml
+kubectl apply -f srcs/config/phpmyadmin-service.yaml
 
 # init dashboard
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml

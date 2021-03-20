@@ -1,23 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: phpmyadmin
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: phpmyadmin
   template:
     metadata:
       labels:
-        app: nginx
+        app: phpmyadmin
     spec:
       containers:
-      - name: nginx
-        image: my_nginx:latest
+      - name: phpmyadmin
+        image: my_phpadmin:latest
         imagePullPolicy: IfNotPresent
         ports:
-        - name: http
-          containerPort: 80
         - name: https
           containerPort: 443
       restartPolicy: Always
