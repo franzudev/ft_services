@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      volumes:
+      - name: task-pv-storage
+        persistentVolumeClaim:
+          claimName: task-pv-claim
+      containers:
+      - name: mysql
+        image: my_sql:latest
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: "/var/lib/mysqld"
+          name: task-pv-storage
+        ports:
+        - name: db
+          containerPort: 3306
+      restartPolicy: Always

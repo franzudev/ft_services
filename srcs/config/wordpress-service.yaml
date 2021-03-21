@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: wordpress
 spec:
+  type: LoadBalancer
   ports:
   # - name: http
   #   port: 5050
@@ -14,4 +15,3 @@ spec:
     targetPort: 443
   selector:
     app: wordpress
-  type: LoadBalancer
