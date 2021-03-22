@@ -6,6 +6,7 @@ spec:
   selector:
     matchLabels:
       app: phpmyadmin
+      tier: db
   template:
     metadata:
       labels:

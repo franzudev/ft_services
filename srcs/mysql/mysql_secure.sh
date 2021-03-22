@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
-apk add install expect
+apk add expect
 
-// Not required in actual script
 MYSQL_ROOT_PASSWORD=abcd1234
 
 SECURE_MYSQL=$(expect -c "

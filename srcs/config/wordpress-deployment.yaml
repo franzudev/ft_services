@@ -6,6 +6,7 @@ spec:
   selector:
     matchLabels:
       app: wordpress
+      tier: db
   template:
     metadata:
       labels:

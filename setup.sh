@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Config for Load Balancer
 # see what changes would be made, returns nonzero returncode if different
 kubectl get configmap kube-proxy -n kube-system -o yaml | \
@@ -41,9 +43,9 @@ kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get
 echo "\n"
 
 kubectl proxy &
-APISERVER=$(kubectl config view --minify | grep server | cut -f 2- -d ":" | tr -d " ")
-SECRET_NAME=$(kubectl get secrets | grep ^default | cut -f1 -d ' ')
-TOKEN=$(kubectl describe secret $SECRET_NAME | grep -E '^token' | cut -f2 -d':' | tr -d " ")
+export APISERVER=$(kubectl config view --minify | grep server | cut -f 2- -d ":" | tr -d " ")
+export SECRET_NAME=$(kubectl get secrets | grep ^default | cut -f1 -d ' ')
+export TOKEN=$(kubectl describe secret $SECRET_NAME | grep -E '^token' | cut -f2 -d':' | tr -d " ")
 
 # curl $APISERVER/api --header "Authorization: Bearer $TOKEN" --insecure
 echo "\nDashboard is at: \n http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/"

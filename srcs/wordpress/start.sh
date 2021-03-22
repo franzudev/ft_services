@@ -1,3 +1,5 @@
+#!/bin/sh
+
 php7-conf
 openrc default
 openrc boot
