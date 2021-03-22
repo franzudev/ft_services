@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: wordpress
+        tier: db
     spec:
       containers:
       - name: wordpress
