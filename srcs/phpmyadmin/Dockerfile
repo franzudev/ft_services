@@ -25,6 +25,9 @@ WORKDIR	/www
 RUN 	wget -c https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-english.tar.gz -O - | tar -xz -C .
 RUN		mv phpMyAdmin-5.0.4-english phpmyadmin
 COPY	config.inc.php phpmyadmin/
+COPY	darkwolf-5.0.zip .
+RUN		unzip -d phpmyadmin/themes/ darkwolf-5.0.zip
+RUN		rm -rf darkwolf-5.0.zip
 
 COPY	nginx.conf /etc/nginx/conf.d/default.conf
 

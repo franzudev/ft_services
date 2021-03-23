@@ -38,10 +38,10 @@ $cfg['Servers'][$i]['AllowNoPassword'] = false;
  */
 
 /* User used to manipulate with storage */
-$cfg['Servers'][$i]['controlhost'] = 'localhost';
+$cfg['Servers'][$i]['controlhost'] = 'mysql';
 // $cfg['Servers'][$i]['controlport'] = '';
-$cfg['Servers'][$i]['controluser'] = 'pma';
-$cfg['Servers'][$i]['controlpass'] = 'pmapass';
+$cfg['Servers'][$i]['controluser'] = 'phpadmin';
+$cfg['Servers'][$i]['controlpass'] = 'superCaliFragiliSticoESpiraLidoso';
 
 /* Storage database and tables */
 $cfg['Servers'][$i]['pmadb'] = 'phpmyadmin';
@@ -154,4 +154,5 @@ $cfg['DefaultLang'] = 'it';
  * in the doc/ folder or at <https://docs.phpmyadmin.net/>.
  */
 
-$cfg['PmaAbsoluteUri'] = '';
+$cfg['ThemeDefault'] = 'darkwolf';
+$cfg['PmaAbsoluteUri'] = 'https://phpmyadmin/phpmyadmin/';
