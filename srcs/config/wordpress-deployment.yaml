@@ -6,12 +6,10 @@ spec:
   selector:
     matchLabels:
       app: wordpress
-      tier: db
   template:
     metadata:
       labels:
         app: wordpress
-        tier: db
     spec:
       containers:
       - name: wordpress

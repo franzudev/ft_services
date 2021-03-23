@@ -23,23 +23,23 @@ docker build -t my_phpadmin -f ./srcs/phpmyadmin/Dockerfile ./srcs/phpmyadmin
 docker build -t my_sql -f ./srcs/mysql/Dockerfile ./srcs/mysql
 
 kubectl apply -f srcs/metalLB/config.yaml
-kubectl apply -f srcs/config/nginx-deployment.yaml
-kubectl apply -f srcs/config/nginx-service.yaml
+kubectl apply -f srcs/config/persistent-volume.yaml
+kubectl apply -f srcs/config/volume-claim.yaml
 kubectl apply -f srcs/config/mysql-deployment.yaml
 kubectl apply -f srcs/config/mysql-service.yaml
 kubectl apply -f srcs/config/wordpress-deployment.yaml
 kubectl apply -f srcs/config/wordpress-service.yaml
 kubectl apply -f srcs/config/phpmyadmin-deployment.yaml
 kubectl apply -f srcs/config/phpmyadmin-service.yaml
-kubectl apply -f srcs/config/persistent-volume.yaml
-kubectl apply -f srcs/config/volume-claim.yaml
+kubectl apply -f srcs/config/nginx-deployment.yaml
+kubectl apply -f srcs/config/nginx-service.yaml
 
 # init dashboard
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
 kubectl apply -f srcs/config/dashboard-adminuser.yaml
 kubectl apply -f srcs/config/admin-rolebinding.yaml
 echo "\n"
-kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
+kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}" | pbcopy
 echo "\n"
 
 kubectl proxy &
@@ -49,6 +49,6 @@ export TOKEN=$(kubectl describe secret $SECRET_NAME | grep -E '^token' | cut -f2
 
 # curl $APISERVER/api --header "Authorization: Bearer $TOKEN" --insecure
 echo "\nDashboard is at: \n http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/"
-
+open http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
 
 kubectl get services

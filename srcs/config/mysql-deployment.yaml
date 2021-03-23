@@ -6,12 +6,10 @@ spec:
   selector:
     matchLabels:
       app: mysql
-      tier: db
   template:
     metadata:
       labels:
         app: mysql
-        tier: db
     spec:
       volumes:
       - name: task-pv-storage

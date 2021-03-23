@@ -24,8 +24,7 @@ RUN		mkdir /www
 WORKDIR	/www
 RUN 	wget -c https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-english.tar.gz -O - | tar -xz -C .
 RUN		mv phpMyAdmin-5.0.4-english phpmyadmin
-RUN		cp phpmyadmin/config.sample.inc.php phpmyadmin/config.inc.php
-RUN		sed -i -e "/blowfish\_secret/s/''/'7\)TQ:\`xLz:z\>\_Ef\<5k\?8q\*Dx\#\\\:h~\(V6'/" phpmyadmin/config.inc.php
+COPY	config.inc.php phpmyadmin/
 
 COPY	nginx.conf /etc/nginx/conf.d/default.conf
 
