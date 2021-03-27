@@ -1,8 +1,4 @@
-rc-update add syslog boot
+# openrc default
+# openrc boot
 
-openrc default
-openrc boot
-
-rc-service syslog start
-
-sh
+cd grafana && ./bin/grafana-server

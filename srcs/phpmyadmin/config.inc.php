@@ -156,4 +156,4 @@ $cfg['DefaultLang'] = 'it';
  */
 
 $cfg['ThemeDefault'] = 'darkwolf';
-$cfg['PmaAbsoluteUri'] = 'https://phpmyadmin/phpmyadmin/';
+$cfg['PmaAbsoluteUri'] = '/';

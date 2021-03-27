@@ -12,16 +12,16 @@ spec:
         app: mysql
     spec:
       volumes:
-      - name: task-pv-storage
+      - name: mysql-pv-storage
         persistentVolumeClaim:
-          claimName: task-pv-claim
+          claimName: mysql-pv-claim
       containers:
       - name: mysql
         image: my_sql:latest
         imagePullPolicy: IfNotPresent
         volumeMounts:
         - mountPath: "/var/lib/mysql"
-          name: task-pv-storage
+          name: mysql-pv-storage
         ports:
         - name: db
           containerPort: 3306

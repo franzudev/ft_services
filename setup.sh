@@ -21,23 +21,20 @@ docker build -t my_nginx -f ./srcs/nginx/Dockerfile ./srcs/nginx
 docker build -t my_wp -f ./srcs/wordpress/Dockerfile ./srcs/wordpress
 docker build -t my_phpadmin -f ./srcs/phpmyadmin/Dockerfile ./srcs/phpmyadmin
 docker build -t my_sql -f ./srcs/mysql/Dockerfile ./srcs/mysql
+docker build -t my_influxdb -f ./srcs/influxdb/Dockerfile ./srcs/influxdb
+docker build -t my_grafana -f ./srcs/grafana/Dockerfile ./srcs/grafana
 
 kubectl apply -f srcs/metalLB/config.yaml
-kubectl apply -f srcs/config/persistent-volume.yaml
-kubectl apply -f srcs/config/volume-claim.yaml
-kubectl apply -f srcs/config/mysql-deployment.yaml
-kubectl apply -f srcs/config/mysql-service.yaml
-kubectl apply -f srcs/config/wordpress-deployment.yaml
-kubectl apply -f srcs/config/wordpress-service.yaml
-kubectl apply -f srcs/config/phpmyadmin-deployment.yaml
-kubectl apply -f srcs/config/phpmyadmin-service.yaml
-kubectl apply -f srcs/config/nginx-deployment.yaml
-kubectl apply -f srcs/config/nginx-service.yaml
+kubectl apply -f srcs/config/mysql/
+kubectl apply -f srcs/config/influxdb/
+kubectl apply -f srcs/config/grafana/
+kubectl apply -f srcs/config/wordpress/
+kubectl apply -f srcs/config/phpmyadmin/
+kubectl apply -f srcs/config/nginx/
 
 # init dashboard
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
-kubectl apply -f srcs/config/dashboard-adminuser.yaml
-kubectl apply -f srcs/config/admin-rolebinding.yaml
+kubectl apply -f srcs/config/kube-user/
 
 kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}" | pbcopy
 
