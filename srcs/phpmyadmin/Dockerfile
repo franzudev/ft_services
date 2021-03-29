@@ -22,12 +22,13 @@ RUN		adduser -D -g 'www' www
 RUN		mkdir /www
 
 WORKDIR	/www
-RUN 	wget -c https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-english.tar.gz -O - | tar -xz -C .
-RUN		mv phpMyAdmin-5.0.4-english phpmyadmin
+RUN 	wget -c https://files.phpmyadmin.net/phpMyAdmin/5.1.0/phpMyAdmin-5.1.0-all-languages.tar.gz -O - | tar -xz -C .
+RUN		mv phpMyAdmin-5.1.0-all-languages phpmyadmin
 COPY	config.inc.php phpmyadmin/
-COPY	darkwolf-5.0.zip .
-RUN		unzip -d phpmyadmin/themes/ darkwolf-5.0.zip
-RUN		rm -rf darkwolf-5.0.zip
+
+RUN		wget https://files.phpmyadmin.net/themes/darkwolf/5.1/darkwolf-5.1.zip
+RUN		unzip -d phpmyadmin/themes/ darkwolf-5.1.zip
+RUN		rm -rf darkwolf-5.1.zip
 
 COPY	nginx.conf /etc/nginx/conf.d/default.conf
 

@@ -156,4 +156,5 @@ $cfg['DefaultLang'] = 'it';
  */
 
 $cfg['ThemeDefault'] = 'darkwolf';
+$cfg['ForceSSL'] = true;
 $cfg['PmaAbsoluteUri'] = '/';
