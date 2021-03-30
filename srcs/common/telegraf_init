@@ -1,4 +1,0 @@
-sed -i "s|# urls = [\"http://127.0.0.1:8086\”]|urls = [\"http://influxdb:8086\"]|g" /telegraf/etc/telegraf/telegraf.conf
-sed -i "s|# skip_database_creation = false|skip_database_creation = false|g" /telegraf/etc/telegraf/telegraf.conf
-sed -i "s|# username = \"telegraf\"|username = \"telegraf\"|g" /telegraf/etc/telegraf/telegraf.conf
-sed -i "s|# password = \"metricsmetricsmetricsmetrics\"|password = \"telegraf\"|g" /telegraf/etc/telegraf/telegraf.conf
