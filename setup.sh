@@ -23,6 +23,7 @@ docker build -t my_phpadmin -f ./srcs/phpmyadmin/Dockerfile ./srcs/phpmyadmin
 docker build -t my_sql -f ./srcs/mysql/Dockerfile ./srcs/mysql
 docker build -t my_influxdb -f ./srcs/influxdb/Dockerfile ./srcs/influxdb
 docker build -t my_grafana -f ./srcs/grafana/Dockerfile ./srcs/grafana
+docker build -t my_ftps -f ./srcs/ftps/Dockerfile ./srcs/ftps
 
 kubectl apply -f srcs/config/metalLB/
 kubectl apply -f srcs/config/mysql/
@@ -31,6 +32,7 @@ kubectl apply -f srcs/config/grafana/
 kubectl apply -f srcs/config/wordpress/
 kubectl apply -f srcs/config/phpmyadmin/
 kubectl apply -f srcs/config/nginx/
+kubectl apply -f srcs/config/ftps/
 
 # init dashboard
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml

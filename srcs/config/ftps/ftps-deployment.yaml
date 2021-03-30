@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ftps
+spec:
+  selector:
+    matchLabels:
+      app: ftps
+  template:
+    metadata:
+      labels:
+        app: ftps
+    spec:
+      containers:
+      - name: ftps
+        image: my_ftps
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 20
+          name: ftp
+        - containerPort: 21
+          name: ftps
+        - containerPort: 21009
+          name: pasv-min
+        - containerPort: 21010
+          name: pasv-mid
+        - containerPort: 21011
+          name: pasv-max
