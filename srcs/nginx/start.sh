@@ -1,12 +1,5 @@
 #!/bin/sh
 
-php7-conf
-openrc default
-openrc boot
-
-rc-service php-fpm7 start
-rc-service php-fpm7 status
-
 telegraf_init
 
 ./telegraf/usr/bin/telegraf --config /telegraf/etc/telegraf/telegraf.conf &

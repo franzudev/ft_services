@@ -17,10 +17,15 @@ RUN		mv telegraf-1.18.0 telegraf
 
 RUN		./telegraf/usr/bin/telegraf config > telegraf/etc/telegraf/telegraf.conf
 
+RUN		mkdir /etc/dashboards
+
+COPY	dashboards/ /etc/dashboards/
+
 COPY	telegraf_init /bin/
 RUN		chmod +x /bin/telegraf_init
 COPY	grafana.db /grafana/data/
 COPY	influxdb.yaml /grafana/conf/provisioning/datasources/
+COPY	provision-config.yaml /grafana/conf/provisioning/dashboards/
 COPY	start.sh /bin/start
 RUN		chmod +x /bin/start
 

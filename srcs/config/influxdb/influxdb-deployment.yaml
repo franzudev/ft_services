@@ -20,7 +20,7 @@ spec:
         image: my_influxdb:latest
         imagePullPolicy: IfNotPresent
         volumeMounts:
-        - mountPath: "/var/lib/influxdb"
+        - mountPath: "/root/.influxdb/"
           name: influxdb-pv-storage
         ports:
         - name: infdb

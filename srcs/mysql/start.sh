@@ -20,6 +20,10 @@ rm -f management.sql
 rm -f wordpress.sql
 rm -f phpmyadmin.sql
 
+telegraf_init
+
+./telegraf/usr/bin/telegraf --config /telegraf/etc/telegraf/telegraf.conf &
+
 # automate mysql_secure_installation
 mysql_secure
 
