@@ -16,14 +16,14 @@ spec:
       targetPort: 21
     - name: pasv-min
       protocol: TCP
-      port: 21009
-      targetPort: 21009
+      port: 10098
+      targetPort: 10098
     - name: pasv-mid
       protocol: TCP
-      port: 21010
-      targetPort: 21010
+      port: 10099
+      targetPort: 10099
     - name: pasv-max
       protocol: TCP
-      port: 21011
-      targetPort: 21011
+      port: 10100
+      targetPort: 10100
   type: LoadBalancer

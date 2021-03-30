@@ -20,9 +20,9 @@ spec:
           name: ftp
         - containerPort: 21
           name: ftps
-        - containerPort: 21009
+        - containerPort: 10098
           name: pasv-min
-        - containerPort: 21010
+        - containerPort: 10099
           name: pasv-mid
-        - containerPort: 21011
+        - containerPort: 10100
           name: pasv-max

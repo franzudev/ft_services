@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# start telegraf service
+telegraf_init
+./telegraf/usr/bin/telegraf --config /telegraf/etc/telegraf/telegraf.conf &
+
+# set ftp user password
+echo "files:testuser" |/usr/sbin/chpasswd
+chown files:files /home/files/ -R
+
+if [ -z $1 ]; then
+  /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
+else
+  $@
+fi

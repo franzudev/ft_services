@@ -1,9 +1,5 @@
 FROM	alpine
 
-RUN		apk update && apk upgrade
-RUN		apk add nginx openssl openrc libc6-compat
-RUN		apk add php7 php7-fpm php7-pdo_mysql php7-cli php7-json php7-mbstring php7-common php7-session php7-iconv php7-gd php7-curl php7-xml php7-mysqli php7-imap php7-cgi fcgi php7-pdo php7-soap php7-xmlrpc php7-posix php7-mcrypt php7-gettext php7-ldap php7-ctype php7-dom
-
 ENV		PHP_FPM_USER="www"
 ENV		PHP_FPM_GROUP="www"
 ENV		PHP_FPM_LISTEN_MODE="0660"
@@ -16,11 +12,15 @@ ENV		PHP_DISPLAY_STARTUP_ERRORS="On"
 ENV		PHP_ERROR_REPORTING="E_COMPILE_ERROR\|E_RECOVERABLE_ERROR\|E_ERROR\|E_CORE_ERROR"
 ENV		PHP_CGI_FIX_PATHINFO=0
 
+RUN		apk update && apk upgrade &&\
+		apk add --no-cache nginx openssl openrc libc6-compat &&\
+		apk add --no-cache php7 php7-fpm php7-pdo_mysql php7-cli php7-json php7-mbstring php7-common php7-session php7-iconv php7-gd php7-curl php7-xml php7-mysqli php7-imap php7-cgi fcgi php7-pdo php7-soap php7-xmlrpc php7-posix php7-mcrypt php7-gettext php7-ldap php7-ctype php7-dom
+
+
 RUN 	openssl req -x509 -nodes -days 365 -subj "/C=IT/ST=IT/O=Franzu, Inc./CN=localhost" -addext "subjectAltName=DNS:localhost" -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.pem
 
-RUN		adduser -D -g 'www' www
-
-RUN		mkdir /www
+RUN		adduser -D -g 'www' www &&\
+		mkdir /www
 
 WORKDIR	/www
 
@@ -30,30 +30,18 @@ COPY	wp-config.php /www/wordpress
 
 COPY	nginx.conf /etc/nginx/conf.d/default.conf
 
-RUN		chown -R www:www /var/lib/nginx
-
-RUN		chown -R www:www /www
-
-RUN		mkdir -p /run/nginx
+RUN		chown -R www:www /var/lib/nginx &&\
+		chown -R www:www /www &&\
+		mkdir -p /run/nginx
 
 WORKDIR	/
 
-RUN		wget -c https://dl.influxdata.com/telegraf/releases/telegraf-1.18.0_linux_amd64.tar.gz -O - | tar -xz -C .
+RUN		wget -c https://dl.influxdata.com/telegraf/releases/telegraf-1.18.0_linux_amd64.tar.gz -O - | tar -xz -C . &&\
+		mv telegraf-1.18.0 telegraf &&\
+		./telegraf/usr/bin/telegraf config > telegraf/etc/telegraf/telegraf.conf
 
-RUN		mv telegraf-1.18.0 telegraf
+COPY	telegraf_init php7-conf start /bin/
 
-RUN		./telegraf/usr/bin/telegraf config > telegraf/etc/telegraf/telegraf.conf
-
-COPY	telegraf_init /bin/
-
-RUN		chmod +x /bin/telegraf_init
-
-COPY	start.sh /bin/start
-
-COPY	php7-conf.sh /bin/php7-conf
-
-RUN		chmod +x /bin/start
-
-RUN		chmod +x /bin/php7-conf
+RUN		chmod +x /bin/telegraf_init /bin/php7-conf /bin/start
 
 CMD		start
