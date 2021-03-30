@@ -24,7 +24,7 @@ docker build -t my_sql -f ./srcs/mysql/Dockerfile ./srcs/mysql
 docker build -t my_influxdb -f ./srcs/influxdb/Dockerfile ./srcs/influxdb
 docker build -t my_grafana -f ./srcs/grafana/Dockerfile ./srcs/grafana
 
-kubectl apply -f srcs/metalLB/config.yaml
+kubectl apply -f srcs/config/metalLB/
 kubectl apply -f srcs/config/mysql/
 kubectl apply -f srcs/config/influxdb/
 kubectl apply -f srcs/config/grafana/
