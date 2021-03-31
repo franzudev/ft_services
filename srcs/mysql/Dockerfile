@@ -4,7 +4,6 @@ RUN		apk update && apk upgrade &&\
 		apk add --no-cache mariadb mariadb-client openrc libc6-compat &&\
 		rm -rf /var/cache/apk/* /tmp/*
 
-
 COPY	my.cnf .
 
 COPY	management.sql wordpress.sql phpmyadmin.sql /

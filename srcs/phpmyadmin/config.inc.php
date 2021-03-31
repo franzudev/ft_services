@@ -115,7 +115,7 @@ $cfg['SaveDir'] = '';
  * uncomment the desired line:
  * default = 'en'
  */
-$cfg['DefaultLang'] = 'it';
+$cfg['Lang'] = 'it';
 //$cfg['DefaultLang'] = 'de';
 
 /**
@@ -156,5 +156,4 @@ $cfg['DefaultLang'] = 'it';
  */
 
 $cfg['ThemeDefault'] = 'darkwolf';
-$cfg['ForceSSL'] = true;
 $cfg['PmaAbsoluteUri'] = '/';
