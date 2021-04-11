@@ -40,8 +40,8 @@ RUN		wget -c https://dl.influxdata.com/telegraf/releases/telegraf-1.18.0_linux_a
 		mv telegraf-1.18.0 telegraf &&\
 		./telegraf/usr/bin/telegraf config > telegraf/etc/telegraf/telegraf.conf
 
-COPY	telegraf_init php7-conf start /bin/
+COPY	telegraf_init php7-conf start service_checker /bin/
 
-RUN		chmod +x /bin/telegraf_init /bin/php7-conf /bin/start
+RUN		chmod +x /bin/telegraf_init /bin/php7-conf /bin/start /bin/service_checker
 
 CMD		start

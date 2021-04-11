@@ -18,7 +18,7 @@ spec:
       containers:
       - name: mysql
         image: my_sql:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Never
         volumeMounts:
         - mountPath: "/var/lib/mysql"
           name: mysql-pv-storage

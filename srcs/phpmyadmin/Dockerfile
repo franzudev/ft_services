@@ -25,13 +25,13 @@ RUN		adduser -D -g 'www' www &&\
 WORKDIR	/www
 
 RUN 	wget -c https://files.phpmyadmin.net/phpMyAdmin/5.1.0/phpMyAdmin-5.1.0-all-languages.tar.gz -O - | tar -xz -C . &&\
-		mv phpMyAdmin-5.1.0-all-languages phpmyadmin
+		mv phpMyAdmin-5.1.0-all-languages/* .
 
-COPY	config.inc.php phpmyadmin/
+COPY	config.inc.php .
 
 RUN		wget https://files.phpmyadmin.net/themes/darkwolf/5.1/darkwolf-5.1.zip &&\
-		unzip -d phpmyadmin/themes/ darkwolf-5.1.zip &&\
-		rm -rf darkwolf-5.1.zip
+		unzip -d themes/ darkwolf-5.1.zip &&\
+		rm -rf darkwolf-5.1.zip phpMyAdmin-5.1.0-all-languages
 
 COPY	nginx.conf /etc/nginx/conf.d/default.conf
 
@@ -45,8 +45,8 @@ RUN		wget -c https://dl.influxdata.com/telegraf/releases/telegraf-1.18.0_linux_a
 		mv telegraf-1.18.0 telegraf &&\
 		./telegraf/usr/bin/telegraf config > telegraf/etc/telegraf/telegraf.conf
 
-COPY	telegraf_init start php7-conf /bin/
+COPY	telegraf_init start php7-conf service_checker /bin/
 
-RUN		chmod +x /bin/telegraf_init /bin/php7-conf /bin/start
+RUN		chmod +x /bin/telegraf_init /bin/php7-conf /bin/start /bin/service_checker
 
 CMD		start

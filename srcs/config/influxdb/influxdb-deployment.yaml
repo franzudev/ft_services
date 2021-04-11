@@ -18,7 +18,7 @@ spec:
       containers:
       - name: influxdb
         image: my_influxdb:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Never
         volumeMounts:
         - mountPath: "/root/.influxdb/"
           name: influxdb-pv-storage

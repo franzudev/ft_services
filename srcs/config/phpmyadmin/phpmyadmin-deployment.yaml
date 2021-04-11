@@ -14,7 +14,7 @@ spec:
       containers:
       - name: phpmyadmin
         image: my_phpadmin:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Never
         ports:
         - name: https
           containerPort: 443

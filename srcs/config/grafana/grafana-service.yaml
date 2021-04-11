@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: grafana
+  annotations:
+    metallb.universe.tf/allow-shared-ip: ft_services_key
 spec:
   ports:
   - name: http
@@ -11,3 +13,4 @@ spec:
   selector:
     app: grafana
   type: LoadBalancer
+  loadBalancerIP: 127.0.0.240

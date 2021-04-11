@@ -1,12 +1,23 @@
+#!/bin/sh
+
+set -m
+
 telegraf_init
 
 ./telegraf/usr/bin/telegraf --config /telegraf/etc/telegraf/telegraf.conf &
 
 influxd &
-
 sleep 2s
 
 influx -execute "CREATE USER telegraf WITH PASSWORD 'telegraf' WITH ALL PRIVILEGES"
 influx -execute "CREATE DATABASE telegraf"
 
-tail -f /dev/null
+while sleep 1; do
+	ps aux |grep influx |grep -q -v grep
+	PROCESS_1_STATUS=$?
+
+	if [ $PROCESS_1_STATUS -ne 0 ]; then
+		echo "Influx has already exited."
+		exit 1
+	fi
+done

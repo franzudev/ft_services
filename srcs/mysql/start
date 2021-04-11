@@ -4,12 +4,11 @@ openrc default
 openrc boot
 
 rm /etc/my.cnf.d/mariadb-server.cnf
-mv my.cnf /etc/my.cnf.d/mariadb-server.cnf
+cp my.cnf /etc/my.cnf.d/mariadb-server.cnf
 
 /etc/init.d/mariadb setup
+/etc/init.d/mariadb start
 
-rc-service mariadb start
-rc-service mariadb status
 
 echo "\ncreating database wordpress\n"
 mysql < management.sql
@@ -27,4 +26,6 @@ telegraf_init
 # automate mysql_secure_installation
 mysql_secure
 
-tail -f /dev/null
+while mysqladmin ping --silent; do
+    sleep 5
+done
