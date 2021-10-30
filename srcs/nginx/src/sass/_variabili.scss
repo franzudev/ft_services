@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Avenir LT Std 65 Medium'), url('../../assets/fonts/AvenirLTStd-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'FouLite';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Avenir LT Std 65 Medium'), url('../../assets/fonts/FoundersGrotTest-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'FouReg';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Avenir LT Std 65 Medium'), url('../../assets/fonts/FoundersGrotTest-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'FouMed';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Avenir LT Std 65 Medium'), url('../../assets/fonts/FoundersGrotTest-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'FouBold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Avenir LT Std 65 Medium'), url('../../assets/fonts/FoundersGrotTest-Bold.woff') format('woff');
+}
+
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+  #{$property}: $value;
+}
+
+@function column($col, $media){
+  @return (100vw / $media) * $col;
+}
+
+@function columnDt($row, $media){
+  @return (100% / $media) * $col;
+}
+
+//$title: pt_reg, sans-serif;
+//$text: pt_bold, sans-serif;
+$col-primary: #212121;
+$col-secondary: #efefef;
+$col-cta: #e87543;
+$tablet: 700px;
+$desktop: 1300px;
+$media-tb: "only screen and (min-width: #{$tablet})";
+$media-dt: "only screen and (min-width: #{$desktop})";

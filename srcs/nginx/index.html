@@ -1,23 +1,223 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
-    <title>FT_SERVICES</title>
-  </head>
-  <body>
-    <h1>ffrancoi FT_SERVICES</h1>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ft_services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" type="text/css" media="screen" href="src/sass/resnor.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="src/sass/main.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="src/css/overlayScrollbars.min.css">
+  <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
+</head>
+<body data-page="Ac3f8De">
+<div id="loader">
+  <div class="loaderLoading">
+    <div class="top"></div>
+    <div class="right"></div>
+    <div class="bottom"></div>
+    <div class="left"></div>
+    <div class="cover"></div>
+    <img id="loader-logo" src="assets/img/logo-white.png" alt="logo Cuisine83 - ristorante di pesce perugia">
+  </div>
+</div>
+<div id="cta-booking">
+  <form class="form-booking" method="POST" action="">
+    <div class="form-el">
+      <h2>Prenota ora!</h2>
+    </div>
+    <div class="input-flex-container">
+      <div class="form-el">
+        <label for="form-nome" id="label-nome">Nome</label>
+        <input class="form-inp" id="form-nome" name="nome" type="text">
+      </div>
+      <div class="form-el">
+        <label for="form-cognome" id="label-cognome">Cognome</label>
+        <input class="form-inp" id="form-cognome" name="cognome" type="text">
+      </div>
+      <div class="form-el">
+        <label for="form-mail" id="label-mail">Mail</label>
+        <input class="form-inp" id="form-mail" name="mail" type="email">
+      </div>
+      <div class="form-el">
+        <label for="form-phone" id="label-phone">Cellulare</label>
+        <input class="form-inp" id="form-phone"  name="cellulare" type="tel">
+      </div>
+      <div class="form-el">
+        <label for="form-date" id="label-date">Giorno</label>
+        <input class="form-inp" id="form-date" type="date" name="giorno">
+      </div>
+      <div class="form-el">
+        <label for="form-time" id="label-time">Ora</label>
+        <select class="form-inp" id="form-time" name="time">
+          <option disabled>Seleziona un'orario</option>
+          <option value="12:00">12:00</option>
+          <option value="12:30">12:30</option>
+          <option value="13:00">13:00</option>
+          <option value="13:30">13:30</option>
+          <option value="14:00">14:00</option>
+          <option value="14:30">14:30</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-el gdpr">
+      Prenotando accetti la nostra&nbsp;<a href="http://localhost:8000/cuisine83/privacy.html"> privacy policy.</a>
+    </div>
+    <div class="form-el submit">
+      <input type="submit">
+    </div>
+    <div class="selectors">
+      <button class="precedent-input"> <i class="im im-angle-down"></i></button>
+      <button class="successive-input"> <i class="im im-angle-up"></i></button>
+    </div>
+  </form>
+</div>
+<div id="menu">
+  <div id="showcase"></div>
+  <nav class="burger-navigator">
     <ul>
-      <li><a href="https://localhost:5050" target="_blank">Wordpress</a></li>
-      <li><a href="https://localhost:5000" target="_blank">PhpMyAdmin</a></li>
-      <li><a href="https://localhost/phpmyadmin" target="_blank">PhpMyAdmin reverse proxy</a></li>
-      <li><a href="http://localhost:3000" target="_blank">Grafana</a></li>
+      <li class="burger-li">
+        <a href="https://localhost/wordpress" class="burger-link">WORDPRESS</a>
+      </li>
+      <li class="burger-li">
+        <a href="http://localhost:3000" class="burger-link">GRAFANA</a>
+      </li>
+      <li class="burger-li">
+        <a href="https://localhost/phpmyadmin" class="burger-link">PHPMYADMIN</a>
+      </li>
     </ul>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-  </body>
+  </nav>
+</div>
+<header class="top-header">
+  <!--    <svg xmlns="http://www.w3.org/2000/svg" class="logo" viewBox="0 0 257.85 80.72"><defs><style>.a,.b,.c,.d{isolation:isolate;}.b,.c{font-size:30px;}.b,.c,.d{fill:#212121;}.b{font-family:BrixtonLight, Brixton;letter-spacing:0.8em;}.c{font-family:CacophonyLoud, Cacophony Loud;letter-spacing:0.2em;}.d{font-size:20px;font-family:BellMT, Bell MT;letter-spacing:0.05em;}</style></defs><g class="a"><text class="b" transform="translate(0 25.5)">CUISINE</text></g><g class="a"><text class="c" transform="translate(0 51.71)">OTTANTATRE</text></g><g class="a"><text class="d" transform="translate(48.62 75.39)">enoteca di mare</text></g></svg>-->
+  <img src="assets/img/logo.png" class="logo"/>
+  <nav class="navigator">
+    <ul class="menu">
+      <li class="menu-li">
+        <a href="https://localhost/wordpress" class="menu-link">
+          <span class="letter-container"><span class="letter">w</span></span>
+          <span class="letter-container"><span class="letter">o</span></span>
+          <span class="letter-container"><span class="letter">r</span></span>
+          <span class="letter-container"><span class="letter">d</span></span>
+          <span class="letter-container"><span class="letter">p</span></span>
+          <span class="letter-container"><span class="letter">r</span></span>
+          <span class="letter-container"><span class="letter">e</span></span>
+          <span class="letter-container"><span class="letter">s</span></span>
+          <span class="letter-container"><span class="letter">s</span></span>
+        </a>
+      </li>
+      <li class="menu-li">
+        <a href="https://localhost:3000" class="menu-link">
+          <span class="letter-container"><span class="letter">g</span></span>
+          <span class="letter-container"><span class="letter">r</span></span>
+          <span class="letter-container"><span class="letter">a</span></span>
+          <span class="letter-container"><span class="letter">f</span></span>
+          <span class="letter-container"><span class="letter">a</span></span>
+          <span class="letter-container"><span class="letter">n</span></span>
+          <span class="letter-container"><span class="letter">a</span></span>
+        </a>
+      </li>
+      <li class="menu-li">
+        <a href="https://localhost:3000" class="menu-link">
+          <span class="letter-container"><span class="letter">p</span></span>
+          <span class="letter-container"><span class="letter">h</span></span>
+          <span class="letter-container"><span class="letter">p</span></span>
+          <span class="letter-container"><span class="letter">m</span></span>
+          <span class="letter-container"><span class="letter">y</span></span>
+          <span class="letter-container"><span class="letter">a</span></span>
+          <span class="letter-container"><span class="letter">d</span></span>
+          <span class="letter-container"><span class="letter">m</span></span>
+          <span class="letter-container"><span class="letter">i</span></span>
+          <span class="letter-container"><span class="letter">n</span></span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div id="menu-burger">
+    <!--        <div id="burger-logo"></div>-->
+    <img id="burger-logo" src="assets/icons/service.png"/>
+    <svg id="burger-cross" data-name="Livello 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324.07 324.07"><defs><style>.ac38a6c0-15d0-4cbd-966c-d11388b57bc0{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:10px;}</style></defs><line class="ac38a6c0-15d0-4cbd-966c-d11388b57bc0" x1="3.54" y1="3.54" x2="320.54" y2="320.54"/><line class="ac38a6c0-15d0-4cbd-966c-d11388b57bc0" x1="320.54" y1="3.54" x2="3.54" y2="320.54"/></svg>
+  </div>
+  <div class="header-background"></div>
+</header>
+<header class="bottom-header">
+  <svg id="booking_svg" style="display: none;" class="booking" data-name="Livello 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 117"><defs/><text id="testo_prenota" class="cls-1" transform="translate(0 33.81)">PREN<tspan class="cls-2" x="102.14" y="0">O</tspan><tspan class="cls-3" x="129.69" y="0">T</tspan><tspan x="153.29" y="0">A</tspan></text><circle cx="93.11" cy="58.56" r="53.56" id="plate"/><path d="M114.75,65.28h0L98,55.59v-34h0a4.95,4.95,0,1,0-9.89,0V61.33h0l21.65,12.5v0a4.83,4.83,0,0,0,2.44.67,4.94,4.94,0,0,0,2.49-9.2Z" id="tick_style"/><g id="knife" data-animator-group="true" data-animator-type="0"><g id="el_vSuwiavGKT_an_UcAHNkaZ7" data-animator-group="true" data-animator-type="1"><path id="knife_style" d="M171.56,3a8.44,8.44,0,0,0-8.45,8.44V69.56h6v36.77a5.45,5.45,0,1,0,10.89,0V11.44A8.44,8.44,0,0,0,171.56,3Z"/></g></g><g id="fork_position" data-animator-group="true" data-animator-type="0"><g id="fork_rotation" data-animator-group="true" data-animator-type="1"><path id="fork_style" d="M25.89,6.78a2,2,0,0,0-4,0v0h0V31.67H18.56V6.83a2,2,0,1,0-4,0V31.67H11.44V6.83a2,2,0,0,0-4,0V31.67H4V6.83a2,2,0,0,0-4,0V41.44a7.28,7.28,0,0,0,7.28,7.28v57.61h0a5.6,5.6,0,0,0,11.19,0h0V48.72h.06a7.28,7.28,0,0,0,7.27-7.28h.06V6.83h0S25.89,6.8,25.89,6.78Z"/></g></g></svg>
+  <div class="social">
+    <a class="fb-link" href="https://github.com/franzudev">
+      <img class="social-ico" src="assets/icons/github.png" alt="facebook icon Cuisine83 - ristorante di pesce perugia">
+      <img class="social-ico-white" src="assets/icons/github-white.png" alt="facebook icon Cuisine83 - ristorante di pesce perugia">
+    </a>
+    <a class="in-link" href="https://www.linkedin.com/in/federico-françois">
+      <img class="social-ico" src="assets/icons/linkedin.png" alt="instagram icon Cuisine83 - ristorante di pesce perugia">
+      <img class="social-ico-white" src="assets/icons/linkedin-white.png" alt="instagram icon Cuisine83 - ristorante di pesce perugia">
+    </a></div>
+  <div class="header-background"></div>
+</header>
+<main class="site">
+  <section class="first-header">
+    <h1 class="first-title">
+      <!--<span>Le migliori</span><span>crudite</span>-->
+      <span>ft_services</span><span></span>
+    </h1>
+    <div class="image"></div>
+<!--    <div class="overlay"></div>-->
+  </section>
+  <!--<div class="chef-shop">
+    <div class="chef-shop-img"></div>
+    <div class="chef-shop-text">
+      <span>I migliori sapori della cucina internazionale, con ingredienti scelti personalmente dai nostri chef</span>
+    </div>
+  </div>
+  <div class="chef-cut">
+    <div class="chef-cut-img"></div>
+    <div class="chef-cut-text">
+      <span>Esperienza stellata nella manipolazione delle materie prime, a garanzia di un sapore unico</span>
+    </div>
+  </div>
+  <section class="local-header">
+    <h1 class="second-title">
+      <span>In un posto</span><span>magico</span>
+    </h1>
+    <div class="image"></div>
+    <div class="overlay"></div>
+  </section>-->
+</main>
+<!--<footer class="footer">
+  <img src="assets/img/LogoReal.png" alt="burger menu Cuisine83 - ristorante di pesce perugia" class="logo-footer">
+  <nav class="nav-footer">
+    <ul class="menu-footer">
+      <li class="menu-li"><a href="http://localhost:8000/cuisine83/index.html" class="menu-link">HOME</a></li>
+      <li class="menu-li"><a href="http://localhost:8000/cuisine83/filosofia.html" class="menu-link">MATERIE PRIME</a></li>
+      <li class="menu-li"><a href="http://localhost:8000/cuisine83/proposte.html" class="menu-link">PROPOSTE</a></li>
+    </ul>
+  </nav>
+  <div class="info">
+    <div class="info-child">
+      <h2>I nostri orari</h2>
+      <div>12.30 - 15   L  M  M  G  V  D</div>
+      <div>19 - 24  L  M  M  G  V  S  D</div>
+    </div>
+    <div class="info-child">
+      <h2>Prenota un tavolo</h2>
+      <div>Online</div>
+      <div>+39 075 398888</div>
+    </div>
+    <div class="info-child">
+      <h2>Dove siamo</h2>
+      &lt;!&ndash; TODO link e icona &ndash;&gt;
+      <div>Via Los Angeles 83, 06081</div>
+      <div>Santa Maria degli Angeli,</div>
+      <div>Assisi, Italia</div>
+    </div>
+  </div>
+</footer>-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.1/TweenMax.min.js"></script>
+<script src="src/js/MorphSVGPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+<script src="src/js/overlayScrolbars.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="src/js/main.js"></script>
+</body>
 </html>

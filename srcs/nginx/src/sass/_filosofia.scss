@@ -1,0 +1,108 @@
+//noinspection SassScssResolvedByNameOnly
+.first-scene{
+  width: column(9, 10);
+  margin-left: column(1, 10);
+  position: relative;
+
+  .ver-image{
+    width: column(6, 10);
+    height: 60vh;
+    background: url("../../assets/img/cook-cond.jpg") no-repeat 50%;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
+
+  .hor-image{
+    width: column(8, 10);
+    height: 18vh;
+    margin: column(-1, 10) 0 0 column(1, 10);
+    background: url("../../assets/img/local.jpg");
+  }
+
+  .word{
+    font-family: FouBold, Founders Grotesk Test, sans-serif;
+    font-size: 70px;
+    background-color: #ffffff;
+    margin:0;
+    padding: 10px;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+  }
+}
+
+
+.quote{
+  width: column(8, 10);
+  margin: column(3, 10) auto;
+
+  i{
+    font-size: column(0.8, 10);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    position: relative;
+    bottom: -20px;
+
+    &:last-child{
+      margin-left: column(7.2, 10);
+      top: -20px;
+    }
+  }
+
+  .text{
+    display: block;
+    max-width: column(5.8, 10);
+    margin: auto;
+    font-size: 18px;
+  }
+
+  .author{
+    @extend .text;
+    text-align: right;
+    font-size: 12px;
+    margin-top: 10px;
+    padding-right: 5px;
+  }
+
+
+}
+.presentation{
+  width: column(10, 10);
+  position: relative;
+  margin: column(3, 10) 0;
+
+  p{
+    display: block;
+    font-size: 24px;
+    line-height: 30px;
+    max-width: column(5, 10);
+    margin: 0 0 0 column(1, 10);
+    background-color: #fff;
+    position: relative;
+  }
+
+  .hor-image{
+    width: column(9, 10);
+    height: column(4.5, 10);
+    margin: -(column(0.5, 10)) 0 0 column(1, 10);
+    background: url("../../assets/img/piatto1.jpg") no-repeat 50%;
+    background-size: cover;
+  }
+
+  .ver-image{
+    width: column(3, 10);
+    height: column(4.5, 10);
+    margin-top: -(column(1, 10));
+    background: url("../../assets/img/bottle.jpg") no-repeat 50%;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
+}
+
+.second-scene{
+  width: column(10,10);
+  margin: 0;
+}
