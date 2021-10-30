@@ -4,6 +4,7 @@ metadata:
   name: mysql-pv-volume
   labels:
     type: local
+    name: mysql-pv-volume
 spec:
   storageClassName: manual
   capacity:

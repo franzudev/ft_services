@@ -4,6 +4,7 @@ metadata:
   name: influxdb-pv-volume
   labels:
     type: local
+    name: influxdb-pv-volume
 spec:
   storageClassName: manual
   capacity:

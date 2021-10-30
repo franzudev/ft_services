@@ -141,7 +141,8 @@ function init (){
         .set('.social-ico-white', { display: 'block' }, 0.3)
         .to('#booking_svg', 0.4, { autoAlpha: 0 }, 0.3)
         .staggerTo('.social-ico-white', 0.2, { autoAlpha: 1 }, 0.1, 0.35)
-        .to('.logo *', 0.3, { display: 'none' }, 0.3)
+        .to('.logo', 0, { display: 'none' }, 0.3)
+        .to('.logo-white', 0, { display: 'block', opacity: 1 }, 0.3)
         .to('#burger-cross', 0.3, { scale: 1 }, 0.2)
         .staggerTo('.burger-li', 0.3, { autoAlpha: 1, y: 0 }, 0.1, 0.7),
 
@@ -153,6 +154,7 @@ function init (){
 
         return timeline;
       },
+
 
       filoQuote: (selector) => {
         let timeline = new TimelineMax({ paused: true })
