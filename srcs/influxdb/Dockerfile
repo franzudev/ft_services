@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.13
 
 ENV		INFLUXDB_CONFIG_PATH="/etc/influxdb.conf"
 ENV		INFLUXDB_ADMIN_USER="telegraf"

@@ -1,4 +1,4 @@
-FROM	alpine
+FROM	alpine:3.13
 
 ENV		PHP_FPM_USER="www"
 ENV		PHP_FPM_GROUP="www"

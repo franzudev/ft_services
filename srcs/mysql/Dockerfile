@@ -1,4 +1,4 @@
-FROM	alpine
+FROM	alpine:3.13
 
 RUN		apk update && apk upgrade &&\
 		apk add --no-cache mariadb mariadb-client openrc libc6-compat &&\

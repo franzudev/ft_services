@@ -1,4 +1,4 @@
-FROM	alpine
+FROM	alpine:3.13
 
 RUN		apk add --no-cache vsftpd openssl libc6-compat &&\
 		rm -rf /var/cache/apk/* /tmp/* &&\
